@@ -185,7 +185,7 @@ button:hover {
 }
 
 .btn-secondary {
-  background-color: #6c757d;
+  background-color:rgb(255, 0, 0);
   color: white;
   padding: 12px 20px;
   border-radius: 5px;
@@ -198,7 +198,7 @@ button:hover {
 }
 
 .btn-secondary:hover {
-  background-color: #5a6268;
+  background-color:rgb(255, 0, 136);
 }
 
 /* Quiz Container Styling */
