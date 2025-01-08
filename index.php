@@ -25,7 +25,7 @@ if (!isset($_SESSION['user_id'])) {
     <form id="quiz-config">
       <div class="form-group">
         <label for="questions">Number of Questions:</label>
-        <input type="number" id="questions" name="questions" min="1" max="50" required>
+        <input type="number" id="questions" class="questions" name="questions" min="1" max="50" required>
       </div>
       
       <div class="form-group">
@@ -72,6 +72,7 @@ if (!isset($_SESSION['user_id'])) {
     <button id="restart-quiz" class="btn-primary">Restart Quiz</button>
   </div>
 <style>
+
 /* Progress Bar Styling */
 .progress-bar {
   position: fixed;
@@ -125,6 +126,7 @@ p {
   padding: 30px;
   width: 90%;
   max-width: 500px;
+  margin-left:20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
