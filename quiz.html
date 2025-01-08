@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trivia Quiz</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="quiz-setup">
+    <h1> Trivia Quiz</h1>
+    <form id="quiz-config">
+      <label for="questions">Number of Questions:</label>
+      <input type="number" id="questions" name="questions" min="1" max="50" required>
+      
+      <label for="category">Category:</label>
+      <select id="category" name="category"></select>
+      
+      <label for="difficulty">Difficulty:</label>
+      <select id="difficulty" name="difficulty">
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+      </select>
+      
+      <label for="type">Type:</label>
+      <select id="type" name="type">
+        <option value="multiple">Multiple Choice</option>
+        <option value="boolean">True/False</option>
+      </select>
+      
+      <button type="button" id="start-quiz">Start Quiz</button>
+    </form>
+  </div>
+
+  <div id="quiz-container" class="hidden">
+    <h1 id="question-title"></h1>
+    <p id="question-text"></p>
+    <div id="options"></div>
+    <p id="timer">Time left: <span id="time-left"></span>s</p>
+  </div>
+
+  <div id="result-container" class="hidden">
+    <h1>Quiz Completed!</h1>
+    <p>Your Score: <span id="final-score"></span></p>
+    <button id="restart-quiz">Restart Quiz</button>
+  </div>
+
+  <form id="submit-score-form" class="hidden" method="POST" action="save_score.php">
+    <input type="hidden" name="score" id="final-score-input">
+    <input type="hidden" name="category" id="category-input">
+    <input type="hidden" name="difficulty" id="difficulty-input">
+    <input type="hidden" name="type" id="type-input">
+  </form>
+
+  <script src="script.js"></script>
+</body>
+</html>

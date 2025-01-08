@@ -1,0 +1,24 @@
+USE trivia_quiz;
+
+
+CREATE TABLE scores (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    score INT NOT NULL,
+    category VARCHAR(100) NOT NULL,
+    difficulty VARCHAR(20) NOT NULL,
+    type VARCHAR(20) NOT NULL,
+    date_taken TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+
+-- Users table
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL
+);
+
+
+http://localhost/sem_1_miniproject/
