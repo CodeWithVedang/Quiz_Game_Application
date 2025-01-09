@@ -5,143 +5,100 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Register</title>
   <style>
-    /* Login and Register Page Styling */
-#login-container,
-#register-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #f5f5f5;
-  padding: 20px;
-}
+    /* Light Theme with Sky Blue */
+    body {
+      background: #f0f8ff; /* Light sky blue background */
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
 
-.card {
-  background: #fff;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  padding: 30px;
-  width: 100%;
-  max-width: 400px;
-  text-align: center;
-}
+    .card {
+      background: #ffffff; /* White card background */
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+      padding: 30px;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
 
-.card h1 {
-  font-size: 2.5rem;
-  color: #333;
-  margin-bottom: 20px;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
+    /* Form Input Styling */
+    .form-group input {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      background-color: #f9f9f9; /* Light gray input background */
+    }
 
-.form-group {
-  margin-bottom: 20px;
-  text-align: left;
-  font-size: 1.2rem;
-}
+    .form-group input:focus {
+      border-color: #87ceeb; /* Sky blue border on focus */
+      outline: none;
+      box-shadow: 0 0 8px rgba(135, 206, 235, 0.5); /* Sky blue shadow */
+    }
 
-.form-group label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 8px;
-  color: #333;
-}
+    /* Button Styling */
+    .btn-primary {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      background-color: #001cbd; /* Sky blue button */
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
 
-.form-group input {
-  width: 100%;
-  padding: 12px;
-  font-size: 16px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  transition: border-color 0.3s ease;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    .btn-primary:hover {
+      background-color: #6cb4d8; /* Darker sky blue on hover */
+      transform: translateY(-2px);
+    }
 
-}
+    .btn-primary:active {
+      transform: translateY(0);
+    }
 
-.form-group input:focus {
-  border-color: #007bff;
-  outline: none;
-}
+    /* Link Styling */
+    .register-link a, .login-link a {
+      color: #001cbd; /* Sky blue links */
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
 
-.btn-primary {
-  width: 100%;
-  padding: 12px;
-  font-size: 16px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    .register-link a:hover, .login-link a:hover {
+      color: #6cb4d8; /* Darker sky blue on hover */
+      text-decoration: underline;
+    }
 
-}
+    /* Heading and Text Styling */
+    .card h1 {
+      font-size: 2.5rem;
+      color: #0a004a;
+      margin-bottom: 20px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
 
-.btn-primary:hover {
-  background-color: #0056b3;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-
-}
-
-.register-link,
-.login-link {
-  margin-top: 20px;
-  font-size: 14px;
-  color: #555;
-}
-
-.register-link a,
-.login-link a {
-  color: #007bff;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.register-link a:hover,
-.login-link a:hover {
-  text-decoration: underline;
-}
-
-/* Progress Bar Styling */
-.progress-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 4px;
-  width: 0;
-  background-color: #007bff;
-  z-index: 1000;
-  transition: width 0.3s ease;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .card {
-    padding: 20px;
-  }
-
-  .card h1 {
-    font-size: 1.8rem;
-  }
-
-  .form-group input {
-    padding: 10px;
-    font-size: 14px;
-  }
-
-  .btn-primary {
-    padding: 10px;
-    font-size: 14px;
-  }
-}
+    p {
+      text-align: center;
+      color: #555;
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+    }
   </style>
 </head>
 <body>
-  <!-- Progress Bar -->
-  <div id="progress-bar" class="progress-bar"></div>
-
   <div id="register-container">
     <div class="card">
       <h1>Register</h1>
@@ -159,7 +116,5 @@
       </form>
     </div>
   </div>
-
-  <script src="script.js"></script>
 </body>
 </html>
