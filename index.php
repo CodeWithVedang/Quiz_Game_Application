@@ -69,7 +69,7 @@ if (!isset($_SESSION['user_id'])) {
   <div id="result-container" class="hidden">
     <h1>Quiz Completed!</h1>
     <p>Your Score: <span id="final-score"></span></p>
-    <button id="restart-quiz" class="btn-primary">Restart Quiz</button>
+    <button id="restart-quiz" class="btn-primary">BACK</button>
   </div>
 <style>
 
