@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
+  <title>Admin Login</title>
   <link rel="stylesheet" href="styles.css">
   <style>
     /* Light Theme with Sky Blue */
     body {
-      background: #f0f8ff; /* Light sky blue background */
+      background: #8e253f99; /* Light sky blue background */
       font-family: 'Arial', sans-serif;
       margin: 0;
       padding: 0;
@@ -52,7 +52,7 @@
       width: 100%;
       padding: 12px;
       font-size: 16px;
-      background-color: #7100bd; /* Sky blue button */
+      background-color: #4b0001; /* Sky blue button */
       color: white;
       border: none;
       border-radius: 8px;
@@ -85,7 +85,7 @@
     /* Heading and Text Styling */
     .card h1 {
       font-size: 2.5rem;
-      color: #0a004a;
+      color: #610000;
       margin-bottom: 20px;
       font-weight: bold;
       text-transform: uppercase;
@@ -137,21 +137,21 @@
   </style>
 </head>
 <body>
-  <div id="login-container">
+  <div id="admin-login-container">
     <div class="card">
-      <h1>Login</h1>
-      <form id="login-form">
+      <h1>Admin Login</h1>
+      <form id="admin-login-form">
         <div class="form-group">
-          <label for="username">Username:</label>
-          <input type="text" id="username" name="username" required>
+          <label for="admin-username">Username:</label>
+          <input type="text" id="admin-username" name="username" required>
         </div>
         <div class="form-group">
-          <label for="password">Password:</label>
-          <input type="password" id="password" name="password" required>
+          <label for="admin-password">Password:</label>
+          <input type="password" id="admin-password" name="password" required>
         </div>
         <button type="submit" class="btn-primary">Login</button>
-        <button type="button" id="admin-login-button" class="btn-secondary">Admin Login</button>
-        <p class="register-link">Don't have an account? <a href="register.html">Register Now</a></p>
+        <button type="button" id="back-button" class="btn-secondary">back</button>
+
       </form>
     </div>
   </div>
@@ -163,20 +163,24 @@
   </div>
 
   <script>
-    // Handle user login form submission
-    document.getElementById('login-form').addEventListener('submit', function(event) {
+ document.getElementById('back-button').addEventListener('click', function() {
+      window.location.href = 'login.html'; // Redirect to admin login page
+    });
+
+    // Handle admin login form submission
+    document.getElementById('admin-login-form').addEventListener('submit', function(event) {
       event.preventDefault();
 
       const formData = new FormData(this);
 
-      fetch('login.php', {
+      fetch('admin_login.php', {
         method: 'POST',
         body: formData
       })
       .then(response => response.json())
       .then(data => {
         if (data.success) {
-          window.location.href = data.redirect; // Redirect to index.php on success
+          window.location.href = 'admin_dashboard.php'; // Redirect to admin dashboard on success
         } else {
           // Show popup with error message
           document.getElementById('error-message').textContent = data.message;
@@ -186,11 +190,6 @@
       .catch(error => {
         console.error('Error:', error);
       });
-    });
-
-    // Handle Admin Login button click
-    document.getElementById('admin-login-button').addEventListener('click', function() {
-      window.location.href = 'admin_login.html'; // Redirect to admin login page
     });
 
     // Close the error popup
