@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
           quizContainer.classList.remove('hidden');
           showQuestion();
         } else {
-          alert('No questions available for the selected options.');
+          alert('No questions available for the selected options!');
         }
       })
       .catch(error => console.error('Error fetching questions:', error));

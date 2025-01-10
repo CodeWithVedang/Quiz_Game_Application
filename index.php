@@ -133,6 +133,7 @@ p {
 .form-group {
   margin-bottom: 20px;
   text-align: left;
+    
 }
 
 label {
@@ -212,7 +213,7 @@ button:hover {
   padding: 30px;
   width: 90%;
   max-width: 600px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 #question-title {
