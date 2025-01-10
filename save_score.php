@@ -25,7 +25,7 @@ $difficulty = $_POST['difficulty'];
 $type = $_POST['type'];
 $date_taken = date('Y-m-d H:i:s'); // Current timestamp
 
-$sql = "INSERT INTO scores (user_id, score, category, difficulty, type, date_taken) 
+$sql = "INSERT INTO quiz (user_id, score, category, difficulty, type, date_taken) 
         VALUES (?, ?, ?, ?, ?, ?)";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("iissss", $user_id, $score, $category, $difficulty, $type, $date_taken);

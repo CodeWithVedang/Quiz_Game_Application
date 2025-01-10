@@ -1,5 +1,12 @@
 USE trivia_quiz;
 
+-- Users table
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL
+);
+
 
 CREATE TABLE scores (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -13,12 +20,19 @@ CREATE TABLE scores (
 );
 
 
--- Users table
-CREATE TABLE users (
+ALTER TABLE users ADD COLUMN status ENUM('pending', 'approved', 'rejected', 'blocked') DEFAULT 'pending';
+
+CREATE TABLE admins (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL
 );
+
+INSERT INTO admins (username, password) 
+VALUES ('admin', 'admin');
+
+
+ALTER TABLE scores RENAME TO quiz;
 
 
 http://localhost/sem_1_miniproject/

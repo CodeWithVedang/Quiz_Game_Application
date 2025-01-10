@@ -13,9 +13,9 @@ if ($conn->connect_error) {
 }
 
 // Fetch all users and their total scores
-$sql = "SELECT users.username, IFNULL(SUM(scores.score), 0) as total_score 
+$sql = "SELECT users.username, IFNULL(SUM(quiz.score), 0) as total_score 
         FROM users 
-        LEFT JOIN scores ON users.id = scores.user_id 
+        LEFT JOIN quiz ON users.id = quiz.user_id 
         GROUP BY users.username 
         ORDER BY total_score DESC";
 
