@@ -22,9 +22,8 @@ $user = $result->fetch_assoc();
 
 if ($user && password_verify($password, $user['password'])) {
     $_SESSION['user_id'] = $user['id'];
-    header("Location: index.php"); // Redirect to a PHP file to maintain session
-    exit();
+    echo json_encode(["success" => true, "redirect" => "index.php"]);
 } else {
-    echo "Invalid credentials.";  // Return error message
+    echo json_encode(["success" => false, "message" => "Invalid credentials."]);
 }
 ?>

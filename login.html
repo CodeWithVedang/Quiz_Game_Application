@@ -25,6 +25,7 @@
       width: 100%;
       max-width: 400px;
       text-align: center;
+      position: relative;
     }
 
     /* Form Input Styling */
@@ -96,13 +97,49 @@
       font-size: 1.1rem;
       margin-bottom: 30px;
     }
+
+    /* Popup Styling */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      text-align: center;
+    }
+
+    .popup p {
+      margin: 0;
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    .popup button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .popup button:hover {
+      background-color: #0056b3;
+    }
   </style>
 </head>
 <body>
   <div id="login-container">
     <div class="card">
       <h1>Login</h1>
-      <form id="login-form" action="login.php" method="POST">
+      <form id="login-form">
         <div class="form-group">
           <label for="username">Username:</label>
           <input type="text" id="username" name="username" required>
@@ -116,5 +153,41 @@
       </form>
     </div>
   </div>
+
+  <!-- Popup for invalid credentials -->
+  <div id="error-popup" class="popup">
+    <p id="error-message"></p>
+    <button onclick="closePopup()">Close</button>
+  </div>
+
+  <script>
+    document.getElementById('login-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const formData = new FormData(this);
+
+      fetch('login.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          window.location.href = data.redirect; // Redirect to index.php on success
+        } else {
+          // Show popup with error message
+          document.getElementById('error-message').textContent = data.message;
+          document.getElementById('error-popup').style.display = 'block';
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    });
+
+    function closePopup() {
+      document.getElementById('error-popup').style.display = 'none';
+    }
+  </script>
 </body>
 </html>
