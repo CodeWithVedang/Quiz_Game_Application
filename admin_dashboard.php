@@ -66,8 +66,67 @@ $conn->close();
       </tbody>
     </table>
   </div>
-
+  <h2>Feedback</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Message</th>
+      <th>Reply</th>
+    </tr>
+  </thead>
+  <tbody id="feedback-table">
+    <!-- Feedback will be populated here -->
+  </tbody>
+</table>
   <script>
+function loadFeedback() {
+    fetch('fetch_all_feedback.php')
+      .then(response => response.json())
+      .then(data => {
+        const feedbackTable = document.getElementById('feedback-table');
+        feedbackTable.innerHTML = '';
+        data.forEach(feedback => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${feedback.username}</td>
+            <td>${feedback.message}</td>
+            <td>
+              <textarea id="reply-${feedback.id}" placeholder="Enter your reply...">${feedback.admin_reply || ''}</textarea>
+              <button onclick="submitReply(${feedback.id})">Submit Reply</button>
+            </td>
+          `;
+          feedbackTable.appendChild(row);
+        });
+      })
+      .catch(error => console.error('Error:', error));
+  }
+
+  function submitReply(feedbackId) {
+    const reply = document.getElementById(`reply-${feedbackId}`).value;
+
+    fetch('submit_reply.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: `feedback_id=${feedbackId}&reply=${encodeURIComponent(reply)}`,
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          alert('Reply submitted successfully!');
+          loadFeedback();
+        } else {
+          alert('Error submitting reply.');
+        }
+      })
+      .catch(error => console.error('Error:', error));
+  }
+
+  loadFeedback();
+
+
     function approveUser(userId) {
       updateUserStatus(userId, 'approved');
     }
