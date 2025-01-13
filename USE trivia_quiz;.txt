@@ -34,5 +34,15 @@ VALUES ('admin', 'admin');
 
 ALTER TABLE scores RENAME TO quiz;
 
+CREATE TABLE feedback (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    message TEXT NOT NULL,
+    admin_reply TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+
 
 http://localhost/sem_1_miniproject/
