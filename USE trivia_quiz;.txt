@@ -41,7 +41,7 @@ CREATE TABLE feedback (
     admin_reply TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-);
+);z
 
 
 

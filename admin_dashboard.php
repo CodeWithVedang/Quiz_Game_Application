@@ -65,8 +65,7 @@ $conn->close();
         <?php endforeach; ?>
       </tbody>
     </table>
-  </div>
-  <h2>Feedback</h2>
+    <h2>Feedback</h2>
 <table>
   <thead>
     <tr>
@@ -79,7 +78,40 @@ $conn->close();
     <!-- Feedback will be populated here -->
   </tbody>
 </table>
+<button id='admin-dashboard-back-btn' type="button" class="btn-primary-2">Back</button>
+
+  </div>
+ <style>
+.btn-primary-2 {
+    width: 25%;
+    padding: 12px;
+    font-size: 16px;
+    background-color:rgb(0, 173, 189); /* Sky blue button */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+margin-left:40%;
+margin-right:100%;
+
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  .btn-primary-2:hover {
+    background-color: #6cb4d8; /* Darker sky blue on hover */
+    transform: translateY(-2px);
+  }
+
+  .btn-primary-2:active {
+    transform: translateY(0);
+  }
+
+ </style>
   <script>
+
+document.getElementById('admin-dashboard-back-btn').addEventListener('click', function() {
+      window.location.href = 'admin_login.html'; // Redirect to admin login page
+    });
 function loadFeedback() {
     fetch('fetch_all_feedback.php')
       .then(response => response.json())

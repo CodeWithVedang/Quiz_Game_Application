@@ -150,8 +150,9 @@
           <input type="password" id="password" name="password" required>
         </div>
         <button type="submit" class="btn-primary">Login</button>
-        <button type="button" id="admin-login-button" class="btn-secondary">Admin Login</button>
         <p class="register-link">Don't have an account? <a href="register.html">Register Now</a></p>
+
+        <p class="register-link">Are you admin? <a href="admin_login.html">Admin</a></p>
       </form>
     </div>
   </div>
@@ -188,11 +189,7 @@
       });
     });
 
-    // Handle Admin Login button click
-    document.getElementById('admin-login-button').addEventListener('click', function() {
-      window.location.href = 'admin_login.html'; // Redirect to admin login page
-    });
-
+  
     // Close the error popup
     function closePopup() {
       document.getElementById('error-popup').style.display = 'none';
